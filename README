@@ -1,0 +1,6 @@
+docker build . -t wav-reverser
+docker run -it -p 9999:80 wav-reverser
+
+# In another shell:
+WAV_FILE=file_to_reverse.wav
+curl -XPOST -vvv localhost:9999/convert.sh --data-binary @"${WAV_FILE}" --http1.0 > reversed.wav
